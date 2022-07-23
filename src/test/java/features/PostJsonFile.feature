@@ -1,19 +1,10 @@
-Feature: create user using post API
+Feature: create new user using post API
 
   Background: 
     * url 'https://gorest.co.in'
-    * def requestPayload =
-      """
-      {
-      		
-             "name": "Rodger",
-             "email": "rodger302@gmail.com",
-             "gender": "male",
-             "status": "active"
-      }
-      """
+    * def requestPayload = read('file:src/test/resources/payload/user.json')
 
-  Scenario: craete a user with the given data
+  Scenario: create a user with the given data
     Given path '/public/v2/users'
     And request requestPayload
     And header Authorization = 'Bearer ' + tokenID
